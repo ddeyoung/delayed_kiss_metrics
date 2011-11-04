@@ -16,7 +16,7 @@ module DelayedKiss
       '_k' => @@key
     }
     params.merge!(properties)
-    HTTParty.delay.get('https://trk.kissmetrics.com/e?' + params.to_param)
+    HTTParty.delay.get('https://trk.kissmetrics.com/e?' + params.to_param) unless @@key.blank?
   end
 
   def self.alias(name, alias_to)
@@ -26,13 +26,13 @@ module DelayedKiss
       '_t' => Time.now.to_i.to_s,
       '_k' => @@key
     }
-    HTTParty.delay.get('https://trk.kissmetrics.com/a?' + params.to_param)
+    HTTParty.delay.get('https://trk.kissmetrics.com/a?' + params.to_param) unless @@key.blank?
   end
 
   def self.set(id, params)
     params['_p'] = id
     params['_t'] = Time.now.to_i.to_s
     params['_k'] = @@key
-    HTTParty.delay.get('https://trk.kissmetrics.com/s?' + params.to_param)
+    HTTParty.delay.get('https://trk.kissmetrics.com/s?' + params.to_param) unless @@key.blank?
   end
 end
