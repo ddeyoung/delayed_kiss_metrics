@@ -1,0 +1,44 @@
+h1. Delayed Kiss
+
+A simple interface for the KISSmetrics API that plays nicely with Delayed Job and Heroku.
+
+h2. Installation
+
+Include the gem in your gemfile:
+
+<pre>
+  gem 'delayed_kiss'
+</p>
+
+Configure your API key:
+<pre>
+  #in config/kiss_metrics.yml
+  development:
+    key: <yourkey>
+  test:
+    key: <yourkey>
+  production:
+    key: <yourkey>
+</pre>
+Initialize the API key
+<pre>
+  #in config/initializers
+  KM_CONFIG = YAML::load(ERB.new(IO.read(File.join(Rails.root, "config/kissmetrics.yml"))).result)[Rails.env]
+  if !KM_CONFIG.blank?
+    DelayedKiss.configure do |config|
+      config.key = KM_CONFIG['key']
+    end
+  end
+</pre>
+
+h2. Usage
+
+Start recording events anywhere in your application:
+<pre>
+  DelayedKiss.alias(anonymous_user, user.km_id)
+  DelayedKiss.record(user.km_id, 'signed up')
+</pre>
+
+h2. Thanks
+
+Delayed Kiss is derived and gemified from https://github.com/vbrendel/delayed_km
