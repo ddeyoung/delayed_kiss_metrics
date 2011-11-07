@@ -41,4 +41,4 @@ Start recording events anywhere in your application:
 
 h2. Thanks
 
-Delayed Kiss is derived and gemified from https://github.com/vbrendel/delayed_km
+DelayedKiss is derived and gemified from https://github.com/vbrendel/delayed_km
