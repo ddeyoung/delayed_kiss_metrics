@@ -8,7 +8,7 @@ Include the gem in your gemfile:
 
 <pre>
   gem 'delayed_kiss'
-</p>
+</pre>
 
 Configure your API key:
 <pre>
