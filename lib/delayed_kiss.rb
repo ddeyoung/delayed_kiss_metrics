@@ -1,4 +1,5 @@
 require "delayed_kiss/version"
+require 'delayed_kiss/railtie' if defined?(Rails)
 
 module DelayedKiss
   mattr_accessor :key
