@@ -12,8 +12,7 @@ Configure your API key:
 
 h3. In Version 0.1.0 
 
-<pre> 
-  #in config/delayed_kiss.yml
+<pre>  #in config/delayed_kiss.yml
   development: 
     key: yourkey 
     whiny_config: true 
@@ -25,8 +24,7 @@ h3. In Version 0.1.0
 
 h3. In Version 0.0.1 
 
-<pre> 
-  #in config/kiss_metrics.yml 
+<pre>  #in config/kiss_metrics.yml 
   development: 
     key: yourkey 
   test: 
@@ -40,16 +38,12 @@ h3. In Version 0.0.1
     DelayedKiss.configure do |config|
       config.key = KM_CONFIG['key'] 
     end 
-  end
-</pre>
+  end</pre>
 
 h2. Usage
 
-Start recording events anywhere in your application:
-<pre>
-  DelayedKiss.alias(anonymous_user, user.km_id)
-  DelayedKiss.record(user.km_id, 'signed up')
-</pre>
+Start recording events anywhere in your application: <pre>  DelayedKiss.alias(anonymous_user, user.km_id)
+  DelayedKiss.record(user.km_id, 'signed up')</pre>
 
 h2. Thanks
 
