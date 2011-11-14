@@ -16,23 +16,23 @@ h3. In Version 0.1.0
 <pre>
   #in config/delayed_kiss.yml
   development:
-    key: <yourkey>
+    key: yourkey
     whiny_config: true
   test:
-    key: <yourkey>
+    key: yourkey
   production:
-    key: <yourkey>
+    key: yourkey
 </pre>
 
 h3. In Version 0.0.1
 <pre>
   #in config/kiss_metrics.yml
   development:
-    key: <yourkey>
+    key: yourkey
   test:
-    key: <yourkey>
+    key: yourkey
   production:
-    key: <yourkey>
+    key: yourkey
 
   #in config/initializers
   KM_CONFIG = YAML::load(ERB.new(IO.read(File.join(Rails.root, "config/kissmetrics.yml"))).result)[Rails.env]
