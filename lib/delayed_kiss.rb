@@ -8,6 +8,9 @@ module DelayedKiss
   mattr_accessor :whiny_config
   @@whiny_config = false
   
+  mattr_accessor :config_file
+  @@config_file = "config/delayed_kiss.yml"
+  
   def self.configure
     yield self
   end
