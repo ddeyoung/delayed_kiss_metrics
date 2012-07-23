@@ -1,6 +1,8 @@
 require "delayed_kiss/version"
 require 'delayed_kiss/railtie' if defined?(Rails)
 
+require 'httparty'
+
 module DelayedKiss
   mattr_accessor :key
   @@key = nil
