@@ -14,6 +14,7 @@ module DelayedKiss
       if !env_config.blank?
         DelayedKiss.configure do |config|
           config.key = env_config['key']
+          config.whiny_config = env_config['key'] || false
         end
       end
     end

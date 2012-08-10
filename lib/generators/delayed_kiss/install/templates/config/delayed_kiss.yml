@@ -1,0 +1,7 @@
+development:
+    key: yourkey
+    whiny_config: true
+test:
+    key: yourkey
+production:
+    key: yourkey

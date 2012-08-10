@@ -10,34 +10,39 @@ Include the gem in your gemfile:
 
 Configure your API key:
 
-h3. In Version 0.1.0 
+h3. In Version 0.2.0
+
+    # run @rails g delayed_kiss:install@
+    # update the config in @config/delayed_kiss.yml@
+
+h3. In Version 0.1.0
 
 <pre>  #in config/delayed_kiss.yml
-  development: 
-    key: yourkey 
-    whiny_config: true 
+  development:
+    key: yourkey
+    whiny_config: true
   test:
-    key: yourkey 
-  production: 
-    key: yourkey 
+    key: yourkey
+  production:
+    key: yourkey
 </pre>
 
-h3. In Version 0.0.1 
+h3. In Version 0.0.1
 
-<pre>  #in config/kiss_metrics.yml 
-  development: 
-    key: yourkey 
-  test: 
+<pre>  #in config/kiss_metrics.yml
+  development:
     key: yourkey
-  production: 
+  test:
+    key: yourkey
+  production:
     key: yourkey
 
   #in config/initializers
-  KM_CONFIG = YAML::load(ERB.new(IO.read(File.join(Rails.root, "config/kissmetrics.yml"))).result)[Rails.env] 
-  if !KM_CONFIG.blank? 
+  KM_CONFIG = YAML::load(ERB.new(IO.read(File.join(Rails.root, "config/kissmetrics.yml"))).result)[Rails.env]
+  if !KM_CONFIG.blank?
     DelayedKiss.configure do |config|
-      config.key = KM_CONFIG['key'] 
-    end 
+      config.key = KM_CONFIG['key']
+    end
   end</pre>
 
 h2. Usage
