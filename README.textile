@@ -47,6 +47,8 @@ h3. In Version 0.0.1
     end
   end</pre>
 
+Follow the instructions for setting up Delayed Job: https://github.com/collectiveidea/delayed_job
+
 h2. Usage
 
 Start recording events anywhere in your application: <pre>  DelayedKiss.alias(anonymous_user, user.km_id)
