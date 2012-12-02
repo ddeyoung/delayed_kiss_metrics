@@ -30,7 +30,7 @@ module DelayedKiss
       '_t' => Time.now.to_i.to_s,
       '_k' => @@key
     })
-    HTTParty.delay.get('https://trk.kissmetrics.com/e?' + query_params.to_param) unless @@key.blank?
+    self.delay.get('https://trk.kissmetrics.com/e?' + query_params.to_param) unless @@key.blank?
   end
 
   def self.alias(alias_from, alias_to)
@@ -43,7 +43,7 @@ module DelayedKiss
       '_t' => Time.now.to_i.to_s,
       '_k' => @@key
     }
-    HTTParty.delay.get('https://trk.kissmetrics.com/a?' + query_params.to_param) unless @@key.blank?
+    self.delay.get('https://trk.kissmetrics.com/a?' + query_params.to_param) unless @@key.blank?
   end
 
   def self.set(id, query_params)
@@ -56,7 +56,7 @@ module DelayedKiss
       '_t' => Time.now.to_i.to_s,
       '_k' => @@key
     })
-    HTTParty.delay.get('https://trk.kissmetrics.com/s?' + query_params.to_param) unless @@key.blank?
+    self.delay.get('https://trk.kissmetrics.com/s?' + query_params.to_param) unless @@key.blank?
   end
 
   def self.verify_configuration
