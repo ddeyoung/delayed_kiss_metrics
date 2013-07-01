@@ -2,21 +2,26 @@ require "delayed_kiss/version"
 require 'delayed_kiss/railtie' if defined?(Rails)
 
 require 'httparty'
+require 'delayed_job'
 
-module DelayedKiss
+class DelayedKiss
   include HTTParty
 
-  mattr_accessor :key
+  cattr_accessor :key
   @@key = nil
 
-  mattr_accessor :whiny_config
+  cattr_accessor :whiny_config
   @@whiny_config = false
 
-  mattr_accessor :config_file
+  cattr_accessor :config_file
   @@config_file = "config/delayed_kiss.yml"
 
   def self.configure
     yield self
+  end
+
+  def self.get_async(url)
+    self.delay.get(url)
   end
 
   def self.record(id, event, query_params={})
@@ -30,7 +35,7 @@ module DelayedKiss
       '_t' => Time.now.to_i.to_s,
       '_k' => @@key
     })
-    self.delay.get('https://trk.kissmetrics.com/e?' + query_params.to_param) unless @@key.blank?
+    self.get_async('https://trk.kissmetrics.com/e?' + query_params.to_param) unless @@key.blank?
   end
 
   def self.alias(alias_from, alias_to)
@@ -43,7 +48,7 @@ module DelayedKiss
       '_t' => Time.now.to_i.to_s,
       '_k' => @@key
     }
-    self.delay.get('https://trk.kissmetrics.com/a?' + query_params.to_param) unless @@key.blank?
+    self.get_async('https://trk.kissmetrics.com/a?' + query_params.to_param) unless @@key.blank?
   end
 
   def self.set(id, query_params)
@@ -56,8 +61,9 @@ module DelayedKiss
       '_t' => Time.now.to_i.to_s,
       '_k' => @@key
     })
-    self.delay.get('https://trk.kissmetrics.com/s?' + query_params.to_param) unless @@key.blank?
+    self.get_async('https://trk.kissmetrics.com/s?' + query_params.to_param) unless @@key.blank?
   end
+
 
   def self.verify_configuration
     raise DelayedKiss::ConfigurationError if @@whiny_config && @@key.blank?

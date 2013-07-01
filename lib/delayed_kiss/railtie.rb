@@ -1,4 +1,4 @@
-module DelayedKiss
+class DelayedKiss
   class Railtie < Rails::Railtie
     initializer "delayed_kiss.load_configuration" do
       env_config = nil

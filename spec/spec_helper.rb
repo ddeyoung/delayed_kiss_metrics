@@ -16,8 +16,8 @@ DelayedKiss.configure do |config|
   config.key = "dlf23jkd9sl32nfj99kl2s8635h3jk33f"
 end
 
-# provide methods for clearing and restoring the configurations 
-module DelayedKiss
+# provide methods for clearing and restoring the configurations
+class DelayedKiss
   @@cached_key = nil
 
   def self.cache_config
