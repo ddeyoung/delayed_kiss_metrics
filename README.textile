@@ -1,4 +1,4 @@
-!https://secure.travis-ci.org/ddeyoung/delayed_kiss.png?branch=master(Build Status)!:http://travis-ci.org/ddeyoung/delayed_kiss
+!https://secure.travis-ci.org/ddeyoung/delayed_kiss.png?branch=master(Build Status)!:http://travis-ci.org/ddeyoung/delayed_kiss "!https://codeclimate.com/github/ddeyoung/delayed_kiss.png!":https://codeclimate.com/github/ddeyoung/delayed_kiss
 
 h1. Delayed Kiss
 
