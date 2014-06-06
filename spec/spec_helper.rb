@@ -31,7 +31,7 @@ end
 
 # ignore delaying jobs
 module Delayed::MessageSending
-  def delay
+  def delay(options = {})
     return self
   end
 end
