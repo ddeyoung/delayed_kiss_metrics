@@ -20,11 +20,11 @@ class DelayedKiss
     yield self
   end
 
-  def self.get_async(url)
-    self.delay.get(url)
+  def self.get_async(url, dj_options = {})
+    self.delay(dj_options).get(url)
   end
 
-  def self.record(id, event, query_params={})
+  def self.record(id, event, query_params = {}, dj_options = {})
     self.verify_configuration
     raise ArgumentError.new("id can't be blank") if id.blank?
     raise ArgumentError.new("event can't be blank") if event.blank?
@@ -35,10 +35,10 @@ class DelayedKiss
       '_t' => Time.now.to_i.to_s,
       '_k' => @@key
     })
-    self.get_async('https://trk.kissmetrics.com/e?' + query_params.to_param) unless @@key.blank?
+    self.get_async('https://trk.kissmetrics.com/e?' + query_params.to_param, dj_options) unless @@key.blank?
   end
 
-  def self.alias(alias_from, alias_to)
+  def self.alias(alias_from, alias_to, dj_options = {})
     self.verify_configuration
     raise ArgumentError.new("you must specify both a from a to value") if alias_from.blank? || alias_to.blank?
 
@@ -48,10 +48,10 @@ class DelayedKiss
       '_t' => Time.now.to_i.to_s,
       '_k' => @@key
     }
-    self.get_async('https://trk.kissmetrics.com/a?' + query_params.to_param) unless @@key.blank?
+    self.get_async('https://trk.kissmetrics.com/a?' + query_params.to_param, dj_options) unless @@key.blank?
   end
 
-  def self.set(id, query_params)
+  def self.set(id, query_params, dj_options = {})
     self.verify_configuration
     raise ArgumentError.new("id can't be blank") if !id || id.blank?
     return if query_params.blank? # don't do anything if we're not setting any values on the identity
@@ -61,7 +61,7 @@ class DelayedKiss
       '_t' => Time.now.to_i.to_s,
       '_k' => @@key
     })
-    self.get_async('https://trk.kissmetrics.com/s?' + query_params.to_param) unless @@key.blank?
+    self.get_async('https://trk.kissmetrics.com/s?' + query_params.to_param, dj_options) unless @@key.blank?
   end
 
 
