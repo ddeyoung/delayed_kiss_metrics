@@ -1,6 +1,6 @@
 !https://secure.travis-ci.org/ddeyoung/delayed_kiss.png?branch=master(Build Status)!:http://travis-ci.org/ddeyoung/delayed_kiss "!https://codeclimate.com/github/ddeyoung/delayed_kiss.png!":https://codeclimate.com/github/ddeyoung/delayed_kiss
 
-h1. Delayed Kiss
+h1. Delayed Kiss Metrics
 
 A simple interface for the KISSmetrics API that plays nicely with Delayed Job and Heroku.
 
